@@ -23,8 +23,8 @@ html {
    Alterar aqui muda a cor em todos os lugares onde é usada.
    ===================== */
 :root {
-    --primaria: #4f46e5;       /* Índigo — cor principal */
-    --secundaria: #7c3aed;     /* Roxo — cor de destaque */
+    --primaria: #3fece4;       /* Cor principal */
+    --secundaria: #3d48e2;     /* Cor de destaque */
     --escuro: #0f172a;         /* Fundo das seções */
     --maisEscuro: #0a0f1c;     /* Fundo do gradiente de partículas */
     --claro: #e2e8f0;          /* Cor do texto geral */
