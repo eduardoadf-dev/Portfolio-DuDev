@@ -1,51 +1,79 @@
 <!DOCTYPE html>
+<!-- Define o tipo do documento como HTML5 -->
 <html lang="pt-br">
+<!-- lang="pt-br" ajuda navegadores e leitores de tela a identificar o idioma da página -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- UTF-8 garante suporte a acentos e caracteres especiais do português -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Essencial para responsividade: faz a página se adaptar ao tamanho da tela do dispositivo -->
+
     <link rel="stylesheet" href="style.css">
+    <!-- Conecta o arquivo de estilos CSS à página -->
+
     <title>Portfólio — Eduardo Alves</title>
+    <!-- Título que aparece na aba do navegador -->
 </head>
 
 <body>
+
+    <!-- FUNDO DECORATIVO -->
+    <!-- Div vazia usada apenas para o efeito de gradiente de fundo definido no CSS -->
     <div class="particulas"></div>
 
-    <!-- Botão hamburguer (mobile) -->
+    <!-- BOTÃO HAMBURGUER (VISÍVEL SÓ NO MOBILE) -->
+    <!-- Ao clicar, abre/fecha o menu de navegação no celular -->
+    <!-- aria-label descreve o botão para leitores de tela (acessibilidade) -->
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <!-- Cada <span> é uma linha do ícone hamburguer (===) -->
+        <!-- O CSS anima essas 3 linhas formando um X quando o menu está aberto -->
         <span></span>
         <span></span>
         <span></span>
     </button>
 
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <!-- position: fixed no CSS faz ela ficar sempre visível no topo ao rolar a página -->
     <nav class="navegacao" id="navegacao">
         <ul class="menu">
-            <li>
-                <a href="#inicio" class="menu-link">Início</a>
-            </li>
-            <li>
-                <a href="#sobre" class="menu-link">Sobre</a>
-            </li>
-            <li>
-                <a href="#projetos" class="menu-link">Projetos</a>
-            </li>
-            <li>
-                <a href="#contatos" class="menu-link">Contatos</a>
-            </li>
+            <!-- Cada item leva a uma seção da página usando âncoras (#id) -->
+            <!-- O scroll suave está ativado no CSS com scroll-behavior: smooth -->
+            <li><a href="#inicio" class="menu-link">Início</a></li>
+            <li><a href="#sobre" class="menu-link">Sobre</a></li>
+            <li><a href="#projetos" class="menu-link">Projetos</a></li>
+            <li><a href="#contatos" class="menu-link">Contatos</a></li>
         </ul>
     </nav>
 
-    <!-- Usando <header> em vez de <main> para a seção inicial -->
+    <!-- CABEÇALHO / SEÇÃO HERO -->
+    <!-- Usando <header> (semântico) em vez de <main> para a seção inicial -->
+    <!-- id="inicio" permite que o menu navegue até aqui -->
     <header id="inicio" class="cabecalho">
+        <!-- Foto de perfil com animação de flutuação definida no CSS -->
         <img src="./assets/Eduardo.png" alt="Foto de perfil de Eduardo Alves" class="foto-perfil">
+        <!-- alt descreve a imagem para leitores de tela e caso a imagem não carregue -->
+
         <h1>Eduardo Alves</h1>
+        <!-- h1 é o título principal da página, deve existir apenas um por página -->
+
         <p class="cabecalho-sub-titulo">Desenvolvedor Front-end</p>
     </header>
 
+    <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
+    <!-- <main> agrupa o conteúdo central, excluindo nav e header -->
     <main>
+
+        <!-- ==================== -->
+        <!-- SEÇÃO: SOBRE MIM     -->
+        <!-- ==================== -->
         <section id="sobre" class="sobre">
             <h2 class="sobre-titulo">Sobre mim</h2>
+            <!-- h2 é o subtítulo de seção, hierarquia correta após h1 -->
+
             <div class="sobre-caixa">
+                <!-- Caixa com efeito glassmorphism (vidro fosco) definido no CSS -->
                 <p class="sobre-paragrafo">Sou um desenvolvedor front-end apaixonado por criar experiências digitais
                     envolventes e intuitivas. Com uma sólida formação em HTML, CSS e JavaScript, estou sempre buscando
                     aprimorar minhas habilidades e aprender novas tecnologias para entregar projetos de alta qualidade. Meu
@@ -55,16 +83,27 @@
             </div>
         </section>
 
+        <!-- ==================== -->
+        <!-- SEÇÃO: PROJETOS      -->
+        <!-- ==================== -->
         <section id="projetos" class="projetos">
             <h2 class="projetos-titulo">Meus projetos</h2>
+
+            <!-- Grade de cards — o CSS usa grid para organizar automaticamente as colunas -->
             <div class="projetos-caixa">
 
+                <!-- CARD DE PROJETO -->
+                <!-- Cada card segue a mesma estrutura: imagem + textos + botão -->
                 <div class="projetos-card">
                     <img src="./assets/Conversor-de-moedas.png" alt="Screenshot do projeto Conversor de Moedas" class="projeto-imagem">
                     <div class="caixa-textos-projeto">
                         <h3 class="info-projetos">Conversor de moedas</h3>
-                        <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários converter moedas entre
-                            diferentes pares de moedas.</p>
+                        <!-- h3 dentro de section com h2 mantém hierarquia correta -->
+                        <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários converter moedas entre diferentes pares de moedas.</p>
+                        <!-- Botão "Ver projeto" com link para o GitHub Pages -->
+                        <!-- target="_blank" abre em nova aba -->
+                        <!-- rel="noopener noreferrer" é uma boa prática de segurança para links externos -->
+                        <a href="https://eduardoadf-dev.github.io/Conversor_de_moedas/" target="_blank" rel="noopener noreferrer" class="botao-projeto">Ver projeto</a>
                     </div>
                 </div>
 
@@ -73,6 +112,7 @@
                     <div class="caixa-textos-projeto">
                         <h3 class="info-projetos">Cronômetro</h3>
                         <p class="paragrafo-projetos">Um cronômetro simples feito com HTML, CSS e JavaScript.</p>
+                        <a href="https://eduardoadf-dev.github.io/Cron-metro/" target="_blank" rel="noopener noreferrer" class="botao-projeto">Ver projeto</a>
                     </div>
                 </div>
 
@@ -81,6 +121,7 @@
                     <div class="caixa-textos-projeto">
                         <h3 class="info-projetos">Dev Burger</h3>
                         <p class="paragrafo-projetos">Um cardápio de hambúrgueres feito com HTML, CSS e JavaScript.</p>
+                        <a href="https://eduardoadf-dev.github.io/Dev-Burguer/" target="_blank" rel="noopener noreferrer" class="botao-projeto">Ver projeto</a>
                     </div>
                 </div>
 
@@ -89,6 +130,7 @@
                     <div class="caixa-textos-projeto">
                         <h3 class="info-projetos">Dev Sorteador</h3>
                         <p class="paragrafo-projetos">Um sorteador de nomes feito com HTML, CSS e JavaScript.</p>
+                        <a href="https://eduardoadf-dev.github.io/Dev_sorteio/" target="_blank" rel="noopener noreferrer" class="botao-projeto">Ver projeto</a>
                     </div>
                 </div>
 
@@ -96,8 +138,8 @@
                     <img src="./assets/Jokenpo.png" alt="Screenshot do projeto Jokenpô" class="projeto-imagem">
                     <div class="caixa-textos-projeto">
                         <h3 class="info-projetos">Jokenpô</h3>
-                        <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários jogar Jokenpô contra o
-                            computador.</p>
+                        <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários jogar Jokenpô contra o computador.</p>
+                        <a href="https://eduardoadf-dev.github.io/JokenPo/" target="_blank" rel="noopener noreferrer" class="botao-projeto">Ver projeto</a>
                     </div>
                 </div>
 
@@ -105,8 +147,8 @@
                     <img src="./assets/Mario-e-Luigi.png" alt="Screenshot do projeto Mario e Luigi" class="projeto-imagem">
                     <div class="caixa-textos-projeto">
                         <h3 class="info-projetos">Mario e Luigi</h3>
-                        <p class="paragrafo-projetos">Uma landing page com o tema dos personagens do jogo Mario feita com
-                            HTML, CSS e JavaScript.</p>
+                        <p class="paragrafo-projetos">Uma landing page com o tema dos personagens do jogo Mario feita com HTML, CSS e JavaScript.</p>
+                        <a href="https://eduardoadf-dev.github.io/Projeto-M-rio-e-Luigi/" target="_blank" rel="noopener noreferrer" class="botao-projeto">Ver projeto</a>
                     </div>
                 </div>
 
@@ -114,8 +156,8 @@
                     <img src="./assets/Pomodoro.png" alt="Screenshot do projeto Pomodoro" class="projeto-imagem">
                     <div class="caixa-textos-projeto">
                         <h3 class="info-projetos">Pomodoro</h3>
-                        <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários gerenciar o tempo de
-                            estudos e descanso usando a técnica Pomodoro.</p>
+                        <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários gerenciar o tempo de estudos e descanso usando a técnica Pomodoro.</p>
+                        <a href="https://eduardoadf-dev.github.io/Pomodoro/" target="_blank" rel="noopener noreferrer" class="botao-projeto">Ver projeto</a>
                     </div>
                 </div>
 
@@ -124,18 +166,27 @@
                     <div class="caixa-textos-projeto">
                         <h3 class="info-projetos">Quadro de metas</h3>
                         <p class="paragrafo-projetos">Um quadro de metas feito com HTML, CSS e JavaScript.</p>
+                        <a href="https://eduardoadf-dev.github.io/Quadro-de-metas/" target="_blank" rel="noopener noreferrer" class="botao-projeto">Ver projeto</a>
                     </div>
                 </div>
 
             </div>
         </section>
 
+        <!-- ==================== -->
+        <!-- SEÇÃO: CONTATOS      -->
+        <!-- ==================== -->
         <section id="contatos" class="contatos">
             <h2 class="contatos-titulo">Entre em contato</h2>
+
+            <!-- FORMULÁRIO DE CONTATO VIA WHATSAPP -->
+            <!-- novalidate desativa a validação padrão do navegador -->
+            <!-- pois fazemos a nossa própria validação no JavaScript -->
             <form class="formulario-contatos" id="formulario" novalidate>
 
                 <div class="grupo-form">
-                    <!-- Label visualmente oculta, mas acessível para leitores de tela -->
+                    <!-- label com sr-only: visualmente oculto, mas lido por leitores de tela -->
+                    <!-- for="nome" conecta o label ao input pelo id, melhorando acessibilidade -->
                     <label for="nome" class="sr-only">Nome</label>
                     <input
                         type="text"
@@ -143,8 +194,8 @@
                         class="campo-form"
                         id="nome"
                         required
-                        autocomplete="name"
-                    >
+                        autocomplete="name">
+                        <!-- autocomplete="name" sugere o nome salvo no navegador -->
                 </div>
 
                 <div class="grupo-form">
@@ -152,21 +203,59 @@
                     <textarea
                         class="campo-form"
                         placeholder="Digite sua mensagem"
-                        rows="6"
+                        rows="6"></textarea>
+                        <!-- rows define a altura inicial do campo de texto -->
                         id="mensagem"
                         required
                     ></textarea>
                 </div>
 
-                <!-- Texto corrigido: WhatsApp -->
+                <!-- Botão de envio — o evento submit é capturado no JavaScript -->
                 <button type="submit" class="botao-form">Enviar pelo WhatsApp</button>
 
             </form>
+
+            <!-- BOTÕES DE REDES SOCIAIS E CURRÍCULO -->
+            <div class="redes-sociais">
+
+                <!-- LinkedIn: abre perfil em nova aba -->
+                <a href="https://www.linkedin.com/in/eduardoadf/" target="_blank" rel="noopener noreferrer" class="botao-rede linkedin">
+                    <!-- Ícone SVG inline: não precisa de arquivo externo, carrega instantaneamente -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+
+                <!-- GitHub: abre perfil em nova aba -->
+                <a href="https://github.com/eduardoadf-dev" target="_blank" rel="noopener noreferrer" class="botao-rede github">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    GitHub
+                </a>
+
+                <!-- E-mail: abre o cliente de e-mail do usuário (ex: Gmail, Outlook) -->
+                <a href="mailto:eduardoadf2020@gmail.com" class="botao-rede email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    E-mail
+                </a>
+
+                <!-- Currículo: download direto do arquivo PDF -->
+                <!-- O atributo download força o navegador a baixar em vez de abrir -->
+                <!-- O arquivo deve estar na raiz do projeto com este nome exato -->
+                <a href="./curriculo.pdf" download class="botao-rede curriculo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    Currículo
+                </a>
+            </div>
         </section>
     </main>
 
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <!-- O ano é preenchido automaticamente pelo JavaScript -->
+        <p>Desenvolvido por <strong>DuDev</strong> &copy; <span id="ano"></span></p>
+    </footer>
+
+    <!-- Script carregado no final do body para garantir que o HTML já foi lido pelo navegador -->
     <script src="script.js"></script>
 
 </body>
-
 </html>

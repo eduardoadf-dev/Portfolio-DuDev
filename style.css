@@ -1,26 +1,41 @@
+/* =====================
+   RESET GLOBAL
+   Remove margens e paddings padrão dos navegadores
+   que variam entre Chrome, Firefox, Safari etc.
+   ===================== */
 * {
     margin: 0;
     padding: 0;
+    /* border-box faz width/height incluir padding e border,
+       evitando que elementos "vazem" para fora do container */
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Scroll suave ao clicar nos links do menu */
 html {
     scroll-behavior: smooth;
 }
 
+/* =====================
+   VARIÁVEIS CSS (Custom Properties)
+   Definidas em :root ficam disponíveis em todo o arquivo.
+   Alterar aqui muda a cor em todos os lugares onde é usada.
+   ===================== */
 :root {
-    --primaria: #27dce9;
-    --secundaria: #1013d8;
-    --escuro: #0f172a;
-    --maisEscuro: #0a0f1c;
-    --claro: #e2e8f0;
-    --vidro: rgba(255, 255, 255, 0.1);
+    --primaria: #4f46e5;       /* Índigo — cor principal */
+    --secundaria: #7c3aed;     /* Roxo — cor de destaque */
+    --escuro: #0f172a;         /* Fundo das seções */
+    --maisEscuro: #0a0f1c;     /* Fundo do gradiente de partículas */
+    --claro: #e2e8f0;          /* Cor do texto geral */
+    --vidro: rgba(255,255,255,0.1); /* Borda semitransparente do glassmorphism */
 }
 
 /* =====================
    UTILITÁRIO: sr-only
-   Oculta visualmente mas mantém acessibilidade
+   Oculta visualmente o elemento mas mantém
+   acessibilidade para leitores de tela.
+   Usado nos <label> do formulário.
    ===================== */
 .sr-only {
     position: absolute;
@@ -43,47 +58,53 @@ body {
    NAVEGAÇÃO — DESKTOP
    ===================== */
 .navegacao {
-    position: fixed;
+    position: fixed;    /* Fica fixo no topo mesmo ao rolar a página */
     top: 0;
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(15, 23, 42, 0.8); /* Fundo semitransparente */
     width: 100%;
-    z-index: 100;
+    z-index: 100;       /* Fica na frente de todos os outros elementos */
     padding: 1.5rem;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px); /* Desfoca o conteúdo atrás da nav */
 }
 
 .menu {
     display: flex;
     justify-content: center;
-    list-style: none;
-    gap: 3rem;
+    list-style: none;   /* Remove os bullets da lista */
+    gap: 3rem;          /* Espaço entre os itens do menu */
 }
 
 .menu-link {
-    text-decoration: none;
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
     color: var(--claro);
     font-weight: 500;
-    position: relative;
+    position: relative; /* Necessário para posicionar o ::after */
     padding: 0.5rem 0;
 }
 
+/* Linha animada que aparece embaixo do link no hover */
 .menu-link::after {
-    content: '';
+    content: '';        /* Pseudo-elemento precisa de content para aparecer */
     height: 2px;
-    width: 0;
+    width: 0;           /* Começa com largura zero (invisível) */
     position: absolute;
     bottom: 0;
     left: 0;
     background: linear-gradient(90deg, var(--primaria), var(--secundaria));
-    transition: width 0.5s ease;
+    transition: width 0.5s ease; /* Animação de saída (mais lenta) */
 }
 
+/* Ao passar o mouse, a linha cresce até 100% */
 .menu-link:hover::after {
     width: 100%;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease; /* Animação de entrada (mais rápida) */
 }
 
-/* Botão hamburguer — oculto no desktop */
+/* =====================
+   BOTÃO HAMBURGUER
+   Visível apenas no mobile (display: none no desktop,
+   display: flex ativado no @media 768px)
+   ===================== */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -93,7 +114,7 @@ body {
     position: fixed;
     top: 1.2rem;
     right: 1.5rem;
-    z-index: 200;
+    z-index: 200;       /* Acima da nav (z-index: 100) */
     background: rgba(15, 23, 42, 0.9);
     border: 1px solid var(--vidro);
     border-radius: 8px;
@@ -103,35 +124,37 @@ body {
     height: 42px;
 }
 
+/* As 3 linhas do ícone hamburguer */
 .menu-toggle span {
     display: block;
     width: 22px;
     height: 2px;
     background: var(--claro);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Prepara as linhas para a animação */
 }
 
-/* Animação do X ao abrir */
+/* Quando o botão tem a classe .ativo (adicionada pelo JS),
+   as linhas se transformam em um X */
 .menu-toggle.ativo span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);  /* Linha de cima desce e gira */
 }
 .menu-toggle.ativo span:nth-child(2) {
-    opacity: 0;
+    opacity: 0; /* Linha do meio some */
 }
 .menu-toggle.ativo span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg); /* Linha de baixo sobe e gira */
 }
 
 /* =====================
    CABEÇALHO / HERO
    ===================== */
 .cabecalho {
-    min-height: 100vh;
+    min-height: 100vh;  /* Ocupa pelo menos 100% da altura da tela */
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; /* Empilha os elementos verticalmente */
     text-align: center;
     padding: 2rem;
 }
@@ -139,12 +162,12 @@ body {
 .foto-perfil {
     width: 300px;
     height: 300px;
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
-    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.5); /* Brilho roxo ao redor */
+    border-radius: 50%; /* Torna a imagem circular */
     border: 4px solid var(--vidro);
-    object-fit: cover;
-    object-position: center 29%;
-    animation: flutuar 5s ease-in-out infinite;
+    object-fit: cover;  /* Recorta a imagem para preencher sem distorcer */
+    object-position: center 29%; /* Ajusta o foco para centralizar o rosto */
+    animation: flutuar 5s ease-in-out infinite; /* Animação de flutuação */
 }
 
 h1 {
@@ -163,7 +186,7 @@ h1 {
    SOBRE
    ===================== */
 .sobre {
-    padding: 6rem 2rem;
+    padding: 6rem 2rem; /* 6rem em cima/baixo, 2rem nas laterais */
 }
 
 .sobre-titulo {
@@ -173,27 +196,28 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Caixa com efeito glassmorphism (vidro fosco) */
 .sobre-caixa {
     padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px;   /* Limita a largura para melhor leitura */
+    margin: 0 auto;     /* Centraliza horizontalmente */
     border-radius: 16px;
     border: 1px solid var(--vidro);
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px); /* Desfoca o fundo atrás da caixa */
+    background: rgba(255, 255, 255, 0.05); /* Fundo levemente branco */
 }
 
 .sobre-paragrafo {
     text-align: justify;
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.7;   /* Espaçamento entre linhas para melhor leitura */
 }
 
 /* =====================
    PROJETOS
    ===================== */
 .projetos {
-    padding: 6rem 2rem; /* Corrigido: padding adicionado */
+    padding: 6rem 2rem;
 }
 
 .projetos-titulo {
@@ -202,6 +226,8 @@ h1 {
     margin-bottom: 50px;
 }
 
+/* Grade responsiva: cria colunas automaticamente
+   cada coluna tem no mínimo 300px, máximo 1fr (igual) */
 .projetos-caixa {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -210,52 +236,89 @@ h1 {
     margin: 0 auto;
 }
 
+/* Cada card é um flex container em coluna
+   para empurrar o botão sempre para o rodapé do card */
 .projetos-card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     backdrop-filter: blur(10px);
     border: 1px solid var(--vidro);
-    overflow: hidden;
+    overflow: hidden;   /* Garante que a imagem não vaze para fora do border-radius */
     transition: all 0.4s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Empilha imagem e texto verticalmente */
 }
 
+/* Efeito de elevação ao passar o mouse */
 .projetos-card:hover {
     box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
-    transform: translateY(-10px) scale(1.03);
+    transform: translateY(-10px) scale(1.03); /* Sobe e aumenta levemente */
 }
 
 .projeto-imagem {
     height: 200px;
     width: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Preenche sem distorcer, recortando se necessário */
 }
 
+/* flex: 1 faz o conteúdo de texto ocupar todo o espaço disponível,
+   empurrando o botão para o fundo independente do tamanho do texto */
 .caixa-textos-projeto {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.75rem; /* Espaço entre título, parágrafo e botão */
 }
 
 .info-projetos {
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 
+/* flex: 1 faz o parágrafo crescer e empurrar o botão para baixo */
 .paragrafo-projetos {
     color: rgba(226, 232, 240, 0.8);
     line-height: 1.5rem;
+    flex: 1;
+}
+
+/* Botão "Ver projeto" nos cards */
+.botao-projeto {
+    display: inline-block;
+    margin-top: auto;   /* Empurra para o fundo do flex container */
+    padding: 0.6rem 1.2rem;
+    background: transparent;
+    border: 1px solid var(--primaria); /* Estilo outline (só borda) */
+    border-radius: 8px;
+    color: var(--primaria);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    align-self: flex-start; /* Não estica para ocupar toda a largura */
+}
+
+/* No hover, o botão fica preenchido com a cor primária */
+.botao-projeto:hover {
+    background: var(--primaria);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    transform: translateY(-2px);
 }
 
 /* =====================
    CONTATOS
    ===================== */
 .contatos {
-    padding: 6rem 2rem; /* Corrigido: padding na seção, não no título */
+    padding: 6rem 2rem;
 }
 
 .contatos-titulo {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 30px;
-    /* Removido: margin-top redundante */
 }
 
 .formulario-contatos {
@@ -279,20 +342,23 @@ h1 {
     border-radius: 8px;
     color: var(--claro);
     border: 1px solid var(--vidro);
-    outline: none;
+    outline: none;      /* Remove o contorno azul padrão do navegador */
     font-size: 1rem;
-    resize: vertical;
+    resize: vertical;   /* Permite redimensionar só verticalmente */
 }
 
+/* Texto placeholder mais suave */
 .campo-form::placeholder {
     color: rgba(226, 232, 240, 0.5);
 }
 
+/* Estado de foco: destaca o campo que está sendo editado */
 .campo-form:focus {
     border-color: var(--secundaria);
     box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
 }
 
+/* Botão de envio — gradiente da cor primária para secundária */
 .botao-form {
     color: var(--claro);
     background: linear-gradient(45deg, var(--primaria), var(--secundaria));
@@ -312,42 +378,144 @@ h1 {
 }
 
 /* =====================
-   PARTÍCULAS / FUNDO
+   BOTÕES DE REDES SOCIAIS
+   ===================== */
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;    /* Quebra para a linha seguinte se não houver espaço */
+    gap: 1rem;
+    margin-top: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.botao-rede {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;        /* Espaço entre ícone e texto */
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    flex: 1;            /* Todos os botões crescem igualmente */
+    justify-content: center;
+    min-width: 130px;   /* Largura mínima antes de quebrar linha */
+}
+
+/* Cada rede tem sua própria identidade visual */
+
+/* LinkedIn — tom azul */
+.botao-rede.linkedin {
+    background: rgba(10, 102, 194, 0.15);
+    border-color: rgba(10, 102, 194, 0.5);
+    color: #60a5fa;
+}
+.botao-rede.linkedin:hover {
+    background: rgba(10, 102, 194, 0.35);
+    border-color: #0a66c2;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(10, 102, 194, 0.3);
+}
+
+/* GitHub — tom neutro/cinza */
+.botao-rede.github {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--vidro);
+    color: var(--claro);
+}
+.botao-rede.github:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.1);
+}
+
+/* E-mail — tom roxo */
+.botao-rede.email {
+    background: rgba(124, 58, 237, 0.15);
+    border-color: rgba(124, 58, 237, 0.5);
+    color: #a78bfa;
+}
+.botao-rede.email:hover {
+    background: rgba(124, 58, 237, 0.3);
+    border-color: var(--secundaria);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
+}
+
+/* Currículo — gradiente roxo, fica totalmente preenchido no hover */
+.botao-rede.curriculo {
+    background: linear-gradient(45deg, rgba(79,70,229,0.2), rgba(124,58,237,0.2));
+    border-color: rgba(79, 70, 229, 0.5);
+    color: #c4b5fd;
+}
+.botao-rede.curriculo:hover {
+    background: linear-gradient(45deg, var(--primaria), var(--secundaria));
+    border-color: transparent;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+/* =====================
+   RODAPÉ
+   ===================== */
+.rodape {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(226, 232, 240, 0.4); /* Texto bem suave */
+    font-size: 0.9rem;
+    border-top: 1px solid var(--vidro); /* Linha separadora */
+    margin-top: 4rem;
+}
+
+/* =====================
+   FUNDO / PARTÍCULAS
+   Gradiente fixo que cria o efeito de "brilho" nos cantos
    ===================== */
 .particulas {
-    position: fixed;
+    position: fixed;    /* Fica fixo mesmo ao rolar */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -1;        /* Fica atrás de todo o conteúdo */
     opacity: 0.5;
     background:
         radial-gradient(circle at 10% 20%, var(--primaria) 0%, transparent 20%),
+        /* Brilho roxo no canto superior esquerdo */
         radial-gradient(circle at 90% 80%, var(--secundaria) 0%, transparent 20%),
-        var(--maisEscuro);
+        /* Brilho roxo no canto inferior direito */
+        var(--maisEscuro); /* Cor base de fundo */
 }
 
 /* =====================
-   ANIMAÇÕES
+   ANIMAÇÃO DE FLUTUAÇÃO
+   Aplicada na foto de perfil
    ===================== */
 @keyframes flutuar {
     0%, 100% {
-        transform: translateY(0);
+        transform: translateY(0);      /* Posição inicial e final: no lugar */
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-20px);  /* Meio da animação: sobe 20px */
     }
 }
 
 /* =====================
    RESPONSIVIDADE
+   Mobile-first: ajustes para telas menores
    ===================== */
 
-/* Tablet grande / laptop pequeno */
+/* Tablet grande / laptop pequeno (até 1024px) */
 @media (max-width: 1024px) {
     h1 {
-        font-size: 3rem;
+        font-size: 3rem; /* Reduz levemente o título */
     }
 
     .projetos-caixa {
@@ -355,27 +523,29 @@ h1 {
     }
 }
 
-/* Tablet */
+/* Tablet (até 768px) */
 @media (max-width: 768px) {
-    /* Navegação mobile: menu vertical dropdown */
+    /* Ativa o botão hamburguer */
     .menu-toggle {
         display: flex;
     }
 
+    /* Menu fecha (altura zero) por padrão no mobile */
     .navegacao {
         padding: 0;
         top: 0;
-        /* Menu fechado por padrão no mobile */
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease, padding 0.3s ease;
     }
 
+    /* Quando o JS adiciona a classe .aberto, o menu abre */
     .navegacao.aberto {
         max-height: 300px;
-        padding: 5rem 1.5rem 1.5rem;
+        padding: 5rem 1.5rem 1.5rem; /* Padding-top maior para não sobrepor o botão */
     }
 
+    /* Menu vira coluna vertical */
     .menu {
         flex-direction: column;
         align-items: center;
@@ -386,7 +556,6 @@ h1 {
         font-size: 1.2rem;
     }
 
-    /* Cabeçalho */
     .foto-perfil {
         width: 220px;
         height: 220px;
@@ -401,7 +570,6 @@ h1 {
         font-size: 1.2rem;
     }
 
-    /* Sobre */
     .sobre-titulo,
     .projetos-titulo,
     .contatos-titulo {
@@ -412,15 +580,14 @@ h1 {
         font-size: 1rem;
     }
 
-    /* Projetos */
+    /* Grade de 2 colunas no tablet */
     .projetos-caixa {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-/* Mobile */
+/* Mobile (até 480px) */
 @media (max-width: 480px) {
-    /* Cabeçalho */
     .foto-perfil {
         width: 180px;
         height: 180px;
@@ -434,11 +601,10 @@ h1 {
         font-size: 1rem;
     }
 
-    /* Seções */
     .sobre,
     .projetos,
     .contatos {
-        padding: 4rem 1rem;
+        padding: 4rem 1rem; /* Menos padding lateral em telas pequenas */
     }
 
     .sobre-caixa {
@@ -451,12 +617,11 @@ h1 {
         font-size: 1.7rem;
     }
 
-    /* Projetos: coluna única */
+    /* Uma coluna só no mobile */
     .projetos-caixa {
         grid-template-columns: 1fr;
     }
 
-    /* Formulário */
     .formulario-contatos {
         padding: 1.5rem 1rem;
     }
@@ -465,9 +630,22 @@ h1 {
         font-size: 0.95rem;
         padding: 0.9rem 1rem;
     }
+
+    /* Redes sociais: grade 2x2 no mobile */
+    .redes-sociais {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .botao-rede {
+        min-width: unset;
+        font-size: 0.88rem;
+        padding: 0.7rem 1rem;
+    }
 }
 
-/* Mobile muito pequeno */
+/* Mobile muito pequeno (até 360px) */
 @media (max-width: 360px) {
     h1 {
         font-size: 1.75rem;
@@ -476,5 +654,10 @@ h1 {
     .foto-perfil {
         width: 150px;
         height: 150px;
+    }
+
+    /* Uma coluna só para redes sociais */
+    .redes-sociais {
+        grid-template-columns: 1fr;
     }
 }
