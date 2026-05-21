@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfólio</title>
+</head>
+
+<body>
+    <div class="particulas"></div>
+
+    <nav class="navegacao">
+        <ul class="menu">
+            <li>
+                <a href="#inicio" class="menu-link">Inicio</a>
+            </li>
+            <li>
+                <a href="#sobre" class="menu-link">Sobre</a>
+            </li>
+            <li>
+                <a href="#projetos" class="menu-link">Projetos</a>
+            </li>
+            <li>
+                <a href="#contatos" class="menu-link">Contatos</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main id="inicio" class="cabecalho">
+        <img src="./assets/Eduardo.png" alt="Foto do Eduardo" class="foto-perfil">
+        <h1>Eduardo Alves</h1>
+        <p class="cabecalho-sub-titulo">Desenvolvedor Front-end</p>
+    </main>
+
+    <section id="sobre" class="sobre">
+        <h2 class="sobre-titulo">Sobre mim</h2>
+        <div class="sobre-caixa">
+            <p class="sobre-paragrafo">Sou um desenvolvedor front-end apaixonado por criar experiências digitais
+                envolventes e intuitivas. Com uma sólida formação em HTML, CSS e JavaScript, estou sempre buscando
+                aprimorar minhas habilidades e aprender novas tecnologias para entregar projetos de alta qualidade. Meu
+                objetivo é transformar ideias em realidade, criando interfaces que sejam não apenas visualmente
+                atraentes, mas também funcionais e acessíveis para todos os usuários.
+            </p>
+        </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+        <h2 class="projetos-titulo">Meus projetos</h2>
+        <div class="projetos-caixa">
+
+            <div class="projetos-card">
+                <img src="./assets/Conversor-de-moedas.png" alt="Projeto 1" class="projeto-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Conversor de moedas</h3>
+                    <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários converter moedas entre
+                        diferentes pares de moedas.</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="./assets/Cronometro.png" alt="Projeto 2" class="projeto-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Cronometro</h3>
+                    <p class="paragrafo-projetos">Um cronometro simples feito com HTML, CSS e JavaScript</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="./assets/Dev-Burger.png" alt="Projeto 3" class="projeto-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Dev Burger</h3>
+                    <p class="paragrafo-projetos">Um cardápio de hamburguers feito com HTML, CSS e JavaScript</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="./assets/Dev-sorteio.png" alt="Projeto 4" class="projeto-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Dev Sorteador</h3>
+                    <p class="paragrafo-projetos">Um sorteador de nomes feito com HTML, CSS e JavaScript</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="./assets/Jokenpo.png" alt="Projeto 5" class="projeto-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Jokenpo</h3>
+                    <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários jogar Jokenpo contra o
+                        computador.</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="./assets/Mario-e-Luigi.png" alt="Projeto 6" class="projeto-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Mario e Luigi</h3>
+                    <p class="paragrafo-projetos">Uma landing page com o tema dos personagens do jogo Mario feita com
+                        HTML, CSS e JavaScript</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="./assets/Pomodoro.png" alt="Projeto 7" class="projeto-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Pomodoro</h3>
+                    <p class="paragrafo-projetos">Um aplicativo web que permite aos usuários gerenciar o tempo de
+                        estudos e descanso usando a tecnica pomodoro</p>
+                </div>
+            </div>
+
+            <div class="projetos-card">
+                <img src="./assets/Quadro-de-metas.png" alt="Projeto 8" class="projeto-imagem">
+                <div class="caixa-textos-projeto">
+                    <h3 class="info-projetos">Quadro de metas</h3>
+                    <p class="paragrafo-projetos">Um quadro de metas feito com HTML, CSS e JavaScript</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contatos" class="contatos">
+        <h2 class="contatos-titulo">Entre em contato</h2>
+        <form class="formulario-contatos" id="formulario">
+            <div class="grupo-form">
+                <input placeholder="Nome" class="campo-form" id="nome" required>
+            </div>
+
+            <div class="grupo-form">
+                <textarea class="campo-form" placeholder="Digite sua Mensagem" rows="6" id="mensagem" required></textarea>
+            </div>
+
+            <button type="submit" class="botao-form">Enviar Wattsapp</button>
+
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
