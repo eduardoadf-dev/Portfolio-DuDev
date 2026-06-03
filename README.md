@@ -1,8 +1,8 @@
-# 🚀 Portfólio — DuDev
+# 🚀 Portfólio - DuDev
 
 Portfólio pessoal desenvolvido com HTML, CSS e JavaScript puro, apresentando meus projetos, habilidades e formas de contato.
 
-🔗 **[Acesse o portfólio](https://portfolio-dudev.vercel.app/)**
+🔗[Acesse o projeto](https://portfolio-dudev.vercel.app/)
 
 ---
 
